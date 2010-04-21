@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateRange.cs" />
     <Compile Include="DateTimeExtensions.cs" />
     <Compile Include="DoubleExtensions.cs" />
     <Compile Include="IntegerExtensions.cs" />
