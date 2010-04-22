@@ -32,5 +32,23 @@ namespace NDueTime.Test
 		{
 			Assert.That(_fiveMinutesAgo.IsBetween(_sixMinutesAgo, _fourMinutesAgo));
 		}
+
+		[Test]
+		public void FiveMinutesAgo_ToRelativeTimeString_ReturnsFiveMinutesAgo()
+		{
+			Assert.AreEqual("5 minutes ago", _fiveMinutesAgo.ToRelativeTimeString());
+		}
+
+		[Test]
+		public void TwoHoursFromNow_ToRelativeTimeString_ReturnsTwoHoursFromNow()
+		{
+			Assert.AreEqual("2 hours from now", DateTime.Now.AddHours(2).ToRelativeTimeString());
+		}
+
+		[Test]
+		public void Now_ToRelativeTimeString_ReturnsAFewMomentsAgo()
+		{
+			Assert.AreEqual("A few moments ago", DateTime.Now.ToRelativeTimeString());
+		}
 	}
 }
