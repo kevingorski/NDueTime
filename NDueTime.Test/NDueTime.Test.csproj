@@ -53,6 +53,7 @@
     <Compile Include="DateTimeExtensionsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeSpanExtensionsTest.cs" />
+    <Compile Include="TimeSpanFormatProviderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NDueTime\NDueTime.csproj">

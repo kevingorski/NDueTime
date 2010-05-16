@@ -30,7 +30,7 @@ namespace NDueTime
 
 		public static string ToRelativeTimeString(this DateTime subject)
 		{
-			string result = String.Empty;
+			string result;
 			TimeSpan difference = subject - DateTime.Now;
 			double totalSeconds = difference.TotalSeconds;
 			bool inTheFuture = totalSeconds > 0;
