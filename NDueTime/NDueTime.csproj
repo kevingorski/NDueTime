@@ -50,6 +50,7 @@
     <Compile Include="DoubleExtensions.cs" />
     <Compile Include="IntegerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RelativeDateTime.cs" />
     <Compile Include="TimeSpanExtensions.cs" />
     <Compile Include="TimeSpanFormatProvider.cs" />
   </ItemGroup>

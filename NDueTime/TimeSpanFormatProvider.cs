@@ -5,20 +5,6 @@ using System.Text;
 
 namespace NDueTime
 {
-	// DateTime examples:
-	// short	6/15/2009
-	// long		Monday, June 15, 2009 
-	// full (short time)	Monday, June 15, 2009 1:45 PM
-	// full (long time)		Monday, June 15, 2009 1:45:30 PM
-	// general (short time)	6/15/2009 1:45 PM
-	// general (long time)	6/15/2009 1:45:30 PM
-
-	// TimeSpan.TryParse
-	// http://msdn.microsoft.com/en-us/library/dd992769.aspx
-
-	// TimeSpan CustomFormatter
-	// http://geekswithblogs.net/luskan/archive/2008/02/04/119285.aspx
-
 	// FormatProviders
 	// http://msdn.microsoft.com/en-us/library/26etazsy(v=VS.100).aspx#FormatProviders
 

@@ -7,6 +7,11 @@ namespace NDueTime
 {
 	public static class DateTimeExtensions
 	{
+		private const int SecondsPerMinute = 60;
+		private const int SecondsPerHour = SecondsPerMinute * 60;
+		private const int SecondsPerDay = SecondsPerHour * 24;
+		private const int SecondsPerWeek = SecondsPerDay * 7;
+
 		public static bool IsBetween(this DateTime subject, DateTime first, DateTime second)
 		{
 			return (first <= subject && subject <= second)
@@ -22,11 +27,6 @@ namespace NDueTime
 		{
 			return subject < DateTime.Now;
 		}
-
-		private const int SecondsPerMinute = 60;
-		private const int SecondsPerHour = SecondsPerMinute * 60;
-		private const int SecondsPerDay = SecondsPerHour * 24;
-		private const int SecondsPerWeek = SecondsPerDay * 7;
 
 		public static string ToRelativeTimeString(this DateTime subject)
 		{

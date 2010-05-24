@@ -11,13 +11,15 @@ Inspired by the Rails time extensions:
 
 	5.Minutes().Ago();
 	
-##Creating Natural Time Expressions From DateTimes
+##Creating Relative Time Expressions From DateTimes
 Humane descriptions of relative times:
 
 	dateTime.ToRelativeTimeString();
 	
-##Parsing Natural Time Expressions
-Not yet implemented, but meant to be similar to Google Calendar's functionality.
+##Parsing Relative Time Expressions
+Similar to scheduling events with Google Calendar:
+
+	RelativeDateTime.Parse("Next Tuesday at 3 PM");
 	
 ##Formatting TimeSpans
 The DateTime struct has native support for string formatting, but TimeSpan has been left to fend for itself. NDueTime has a CustomFormatProvider for TimeSpans:
