@@ -28,13 +28,13 @@ namespace NDueTime.Test
 		}
 
 		[Test]
-		public void TenAM_ParseRelativeTime_ReturnsTenAMToday()
+		public void TenAm_ParseRelativeTime_ReturnsTenAmToday()
 		{
 			Assert.AreEqual(DateTime.Today.AddHours(10), RelativeDateTime.Parse("10 AM"));
 		}
 
 		[Test]
-		public void ThreePM_ParseRelativeTime_ReturnsThreePMToday()
+		public void ThreePm_ParseRelativeTime_ReturnsThreePmToday()
 		{
 			Assert.AreEqual(DateTime.Today.AddHours(15), RelativeDateTime.Parse("3 PM"));
 		}
@@ -73,7 +73,7 @@ namespace NDueTime.Test
 		}
 
 		[Test]
-		public void NextTuesdayAtThreePM_ParseRelativeTime_ReturnsNextTuesdayAtThreePM()
+		public void NextTuesdayAtThreePm_ParseRelativeTime_ReturnsNextTuesdayAtThreePm()
 		{
 			DateTime comparisonDate = DateTime.Today.AddDays(7).AddHours(15);
 
@@ -84,7 +84,7 @@ namespace NDueTime.Test
 		}
 
 		[Test]
-		public void ThreePMNextTuesday_ParseRelativeTime_ReturnsThreePMNextTuesday()
+		public void ThreePmNextTuesday_ParseRelativeTime_ReturnsThreePmNextTuesday()
 		{
 			DateTime comparisonDate = DateTime.Today.AddDays(7).AddHours(15);
 
@@ -92,6 +92,24 @@ namespace NDueTime.Test
 				comparisonDate = comparisonDate.AddDays(1);
 
 			Assert.AreEqual(comparisonDate, RelativeDateTime.Parse("3 PM Next Tuesday"));
+		}
+
+		[Test]
+		public void Noon_ParseRelateiveTime_ReturnsNoonToday()
+		{
+			Assert.AreEqual(DateTime.Today.AddHours(12), RelativeDateTime.Parse("Noon"));
+		}
+
+		[Test]
+		public void HalfPastNoon_ParseRelativeTime_ReturnsTwelveThirtyToday()
+		{
+			Assert.AreEqual(DateTime.Today.AddHours(12).AddMinutes(30), RelativeDateTime.Parse("Half past noon"));
+		}
+
+		[Test]
+		public void QuarterUntil3Pm_ParseRelativeTime_ReturnsTwoFortyFiveToday()
+		{
+			Assert.AreEqual(DateTime.Today.AddHours(14).AddMinutes(45), RelativeDateTime.Parse("Quarter until 3PM"));
 		}
 	}
 }
