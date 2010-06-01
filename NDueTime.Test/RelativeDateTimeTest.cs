@@ -40,12 +40,9 @@ namespace NDueTime.Test
 		}
 
 		[Test]
-		public void Tuesday_ParseRelativeTime_ReturnsFirstTuesdayAfterToday()
+		public void Tuesday_ParseRelativeTime_ReturnsTuesdayInTheSameWeek()
 		{
-			DateTime comparisonDate = DateTime.Today.AddDays(1);
-
-			while (comparisonDate.DayOfWeek != DayOfWeek.Tuesday)
-				comparisonDate = comparisonDate.AddDays(1);
+			DateTime comparisonDate = DateTime.Today.FindDayInTheSameWeek(DayOfWeek.Tuesday);
 
 			Assert.AreEqual(comparisonDate, RelativeDateTime.Parse("Tuesday"));
 		}
@@ -53,10 +50,10 @@ namespace NDueTime.Test
 		[Test]
 		public void NextTuesday_ParseRelativeTime_ReturnsNextTuesday()
 		{
-			DateTime comparisonDate = DateTime.Today.AddDays(7);
-
-			while (comparisonDate.DayOfWeek != DayOfWeek.Tuesday)
-				comparisonDate = comparisonDate.AddDays(1);
+			DateTime comparisonDate = 
+				DateTime.Today
+					.AddDays(7)
+					.FindDayInTheSameWeek(DayOfWeek.Tuesday);
 
 			Assert.AreEqual(comparisonDate, RelativeDateTime.Parse("Next Tuesday"));
 		}
@@ -64,10 +61,10 @@ namespace NDueTime.Test
 		[Test]
 		public void LastTuesday_ParseRelativeTime_ReturnsLastTuesday()
 		{
-			DateTime comparisonDate = DateTime.Today.AddDays(-7);
-
-			while (comparisonDate.DayOfWeek != DayOfWeek.Tuesday)
-				comparisonDate = comparisonDate.AddDays(-1);
+			DateTime comparisonDate = 
+				DateTime.Today
+					.AddDays(-7)
+					.FindDayInTheSameWeek(DayOfWeek.Tuesday);
 
 			Assert.AreEqual(comparisonDate, RelativeDateTime.Parse("Last Tuesday"));
 		}
@@ -75,10 +72,11 @@ namespace NDueTime.Test
 		[Test]
 		public void NextTuesdayAtThreePm_ParseRelativeTime_ReturnsNextTuesdayAtThreePm()
 		{
-			DateTime comparisonDate = DateTime.Today.AddDays(7).AddHours(15);
-
-			while (comparisonDate.DayOfWeek != DayOfWeek.Tuesday)
-				comparisonDate = comparisonDate.AddDays(1);
+			DateTime comparisonDate = 
+				DateTime.Today
+					.AddDays(7)
+					.AddHours(15)
+					.FindDayInTheSameWeek(DayOfWeek.Tuesday);
 
 			Assert.AreEqual(comparisonDate, RelativeDateTime.Parse("Next Tuesday at 3 PM"));
 		}
@@ -86,10 +84,11 @@ namespace NDueTime.Test
 		[Test]
 		public void ThreePmNextTuesday_ParseRelativeTime_ReturnsThreePmNextTuesday()
 		{
-			DateTime comparisonDate = DateTime.Today.AddDays(7).AddHours(15);
-
-			while (comparisonDate.DayOfWeek != DayOfWeek.Tuesday)
-				comparisonDate = comparisonDate.AddDays(1);
+			DateTime comparisonDate = 
+				DateTime.Today
+					.AddDays(7)
+					.AddHours(15)
+					.FindDayInTheSameWeek(DayOfWeek.Tuesday);
 
 			Assert.AreEqual(comparisonDate, RelativeDateTime.Parse("3 PM Next Tuesday"));
 		}

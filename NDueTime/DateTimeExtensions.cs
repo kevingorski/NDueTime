@@ -28,6 +28,16 @@ namespace NDueTime
 			return subject < DateTime.Now;
 		}
 
+		public static DateTime FindDayInTheSameWeek(this DateTime subject, DayOfWeek dayOfWeek)
+		{
+			int daysIncrement = (subject.DayOfWeek < dayOfWeek) ? 1 : -1;
+
+			while (subject.DayOfWeek != dayOfWeek)
+				subject = subject.AddDays(daysIncrement);
+
+			return subject;
+		}
+
 		public static string ToRelativeTimeString(this DateTime subject)
 		{
 			string result;
