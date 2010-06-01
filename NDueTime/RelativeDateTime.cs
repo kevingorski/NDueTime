@@ -23,39 +23,43 @@ namespace NDueTime
 
 		public static DateTime Parse(string phrase)
 		{
-			DateTime? result = null;
+			string originalPhrase = (string)phrase.Clone();
+			DateTime? date;
+			TimeSpan? time;
 
 			phrase = phrase.ToLowerInvariant();
 
 			if (SearchAndRemove(ref phrase, "now"))
 			{
-				result = DateTime.Now;
+				date = DateTime.Now;
 			}
 			else if (SearchAndRemove(ref phrase, "today"))
 			{
-				result = DateTime.Today;
+				date = DateTime.Today;
 			}
 			else if (SearchAndRemove(ref phrase, "tomorrow"))
 			{
-				result = DateTime.Today.AddDays(1);
+				date = DateTime.Today.AddDays(1);
 			}
 			else
 			{
-				result = ParseDayOfWeek(ref phrase);
+				date = ParseDayOfWeek(ref phrase);
 			}
 
-			if (result == null)
+			time = ParseTimeOfDay(phrase);
+
+			if(!(date.HasValue || time.HasValue))
 			{
-				result = DateTime.Today;
+				throw new FormatException(String.Format("Could not parse '{0}'", originalPhrase));
 			}
 
-			return result.Value + ParseTimeOfDay(phrase);
+			return (date ?? DateTime.Today) + (time ?? new TimeSpan());
 		}
 
-		private static TimeSpan ParseTimeOfDay(string phrase)
+		private static TimeSpan? ParseTimeOfDay(string phrase)
 		{
-			TimeSpan timeOfDay = new TimeSpan();
-			TimeSpan offset = new TimeSpan();
+			TimeSpan? timeOfDay = null;
+			TimeSpan? offset = null;
 			DateTime parsedValue;
 
 			// Remove some common phrase noise
@@ -73,9 +77,9 @@ namespace NDueTime
 				offset = TimeSpan.FromMinutes(30);
 			}
 
-			if(SearchAndRemove(ref phrase, "until"))
+			if(offset.HasValue && SearchAndRemove(ref phrase, "until"))
 			{
-				offset = offset.Negate();
+				offset = offset.Value.Negate();
 			}
 
 			if (SearchAndRemove(ref phrase, "noon"))
@@ -87,7 +91,12 @@ namespace NDueTime
 				timeOfDay = parsedValue.TimeOfDay;
 			}
 
-			return timeOfDay + offset;
+			if(!(timeOfDay.HasValue || offset.HasValue))
+			{
+				return null;
+			}
+
+			return (timeOfDay ?? new TimeSpan()) + (offset ?? new TimeSpan());
 		}
 
 		private static DateTime? ParseDayOfWeek(ref string phrase)

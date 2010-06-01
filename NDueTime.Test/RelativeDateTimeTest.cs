@@ -110,5 +110,12 @@ namespace NDueTime.Test
 		{
 			Assert.AreEqual(DateTime.Today.AddHours(14).AddMinutes(45), RelativeDateTime.Parse("Quarter until 3PM"));
 		}
+
+		[Test]
+		[ExpectedException(typeof(FormatException))]
+		public void InvalidInput_ParseRelativeTime_ThrowsFormatException()
+		{
+			RelativeDateTime.Parse("asdf");
+		}
 	}
 }
