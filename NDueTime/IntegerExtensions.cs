@@ -26,5 +26,10 @@ namespace NDueTime
 		{
 			return DoubleExtensions.Hours(hours);
 		}
+
+		public static TimeSpan Days(this int days)
+		{
+			return DoubleExtensions.Days(days);
+		}
 	}
 }
