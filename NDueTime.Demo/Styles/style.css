@@ -1,0 +1,45 @@
+body {
+	background: #FFF url('../Images/Clock.jpg') no-repeat; 
+	font-family: 'OFL Sorts Mill Goudy TT', serif;
+	padding: 1em; 
+	width: 42em; 
+}
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+}
+h1 { font-size: 3em; margin-bottom: 4em; }
+
+pre { font-family: monospace; color: #000; background: #DDD; padding: 1em 4em; }
+dl { background: #EEE; border: medium solid black; float: left; width: 10.5em; padding: 1em; margin-right: 1em; }
+dl dt { font-weight: bold; border-bottom: thin solid black; }
+dl dd { margin: 0; padding: 0; }
+
+.Clear { clear: both; }
+.Class { font-family: monospace; }
+.ProgressIndicator { display: none; }
+.InProgress .ProgressIndicator { display: inline; }
+
+.FeatureSection { background: #EEE; border: medium solid black; margin: 1em 0; padding: 1em; }
+.FeatureSection .Source { margin: 1em 0 0; }
+.FeatureSection .Result { margin: 0 0 1em; background: #DDD url('../Images/Arrow.png') no-repeat 1em 8px; }
+.FeatureSection input {
+	font-family: "OFL Sorts Mill Goudy TT";
+	font-size: 1em;
+}
+.FeatureSection input[type="text"] {
+	border: solid thin #AAA;
+	background: #FFF;
+	background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#DDD));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#DDDDDD');
+	background: -moz-linear-gradient(top,  #FFF,  #DDD);
+	margin-right: 1em;
+	padding: .5em; 
+	width: 300px;
+}
+
+@media screen and (max-device-width: 480px){
+	body {
+		-webkit-text-size-adjust:none;
+	}
+}
